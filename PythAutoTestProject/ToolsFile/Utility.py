@@ -8,14 +8,15 @@ import random
 import requests
 import configparser
 import os
-import jenkins
+# import jenkins
 
-from selenium.webdriver.support.ui import WebDriverWait
 
-cf = configparser.ConfigParser()
-cf.read('Configure.ini')
+
 
 class TestUtility:
+    conf = configparser.ConfigParser()
+    strConfigFile = os.path.dirname(os.path.abspath(__file__)) + "\\" + 'DemoENVProConfigure.ini'
+    conf.read(strConfigFile, encoding="utf-8")
     strFileName = r'd:\\TestResultLog_'+ str(datetime.date.today().strftime("%Y_%m_%d")) + '.txt'
     # def __init__(self):
         #filePath = cf['LogFile']['userPWD']
@@ -87,8 +88,9 @@ class TestUtility:
         regisCode = requests.get(registUrl)
         return regisCode.text
 
-    def get_ele_times(self,driver,times,func):
-        return WebDriverWait(driver,times).until(func)
+    # def get_ele_times(self,driver,times,func):
+
+        # return WebDriverWait(driver,times).until(func)
 
     def get_Jenkins():
         JenkinsServer = jenkins.Jenkins('http://localhost:8080',username='admin',password = 'Admin')

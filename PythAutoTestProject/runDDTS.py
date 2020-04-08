@@ -1,14 +1,17 @@
 import unittest
 import time
 from ToolsFile import HTMLTestReportEN
-
-
-class FuncTest(unittest.TestCase):
-
-    def runFunVerify_1001(self):
-        # TODO: finish the method contract context
-        h = 8+ 8
-        self.assertEqual(h,17,'runFunVerify_1002')
+import TestCasesLib
+USER_PHONENUMBER = 0 # User register cell phone number.
+# class BVTs(unittest.TestCase):
+    # TODO: 验证多个Page 都分别引用GUIElements对象是，该对象在内存中创建几次，在GUIElement的类变量声明段中打印时间，或输出。
+class BVTTest(unittest.TestCase):
+    def callUserRegister_1001(self):
+        return True
+    def callUserLogin_1002(self):
+        TestCasesLib.testCasesLib.tc_UserLogin_1002()
+    def callUserDeposit_1003(self):
+        TestCasesLib.testCasesLib.tc_UserDeposit_1003()
 
 def Suite():
     '''
@@ -16,16 +19,18 @@ def Suite():
     Return the suite object which stored the test cases suite declared in test classes.
     '''
     suite = unittest.TestSuite()
-    suite.addTest(FuncTest('runFunVerify_1001'))
+    # suite.addTest(BVTTest('callUserRegister_1001'))
+    # suite.addTest(BVTTest('callUserLogin_1002'))
+    suite.addTest(BVTTest('callUserDeposit_1003'))
     return suite
 if __name__ == '__main__':
-    filename = 'test.html'
+    filename = 'AgmBrokerTestResult.html'
     #定义报告文件权限，wb，表示有读写权限
     fp = open(filename,'wb')
     runner = HTMLTestReportEN.HTMLTestRunner(
         stream=fp,
-        title='The testing report for ...',
-        description='This is our auto testing result summary.')
+        title='The testing report for https://www.agmbroker.com/',
+        description='This is our auto web testing result summary.')
     # 执行测试
     runner.run(Suite())
 
