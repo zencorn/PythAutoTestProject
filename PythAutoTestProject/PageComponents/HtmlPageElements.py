@@ -21,16 +21,29 @@ class webDrive():
         self.chrBrowser.maximize_window()
 
 confobj = TestUtility.conf
-webDriveObj = webDrive(confobj['TestEnvURL']['TestAgmBrokerHome'])
+webDriveObj = webDrive(confobj['ProductURL']['AgmBrokerHome'])
 # webDriveObjCRM = webDrive('https://usercenter.agmbroker.com')
 
 
 class pageAdmin():
+    def changeAdminPortal():
+        webDriveObj.chrBrowser.get(confobj['ProductURL']['AgmAdmin'])
+
     def inconEnglish():
-        webDriveObj.chrBrowser.get(confobj['TestEnvURL']['TestAgmAdmin'])
         inconEnglish = webDriveObj.chrBrowser.find_element_by_xpath('//*[@id="ChangeUS"]')
         return inconEnglish
-
+    def txtAdmin():
+        txtAdmin = webDriveObj.chrBrowser.find_element_by_xpath('//*[@id="AdminLoginUsername"]')
+        return txtAdmin
+    def txtPwdAdmin():
+        txtPwdAdmin = webDriveObj.chrBrowser.find_element_by_xpath('//*[@id="AdminLoginPassword"]')
+        return txtPwdAdmin
+    def txtVerifyCode():
+        txtVerifyCode = webDriveObj.chrBrowser.find_element_by_xpath('//*[@id="AdminLoginCaptcha"]')
+        return txtVerifyCode
+    def btnLogin():
+        btnLogin = webDriveObj.chrBrowser.find_element_by_xpath('//*[@id="AdminLoginButton"]')
+        return btnLogin
 class PageAmgmHome():
     def linkLogin():
         linkLogin = 1

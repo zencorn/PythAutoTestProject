@@ -15,12 +15,22 @@ import os
 
 class TestUtility:
     conf = configparser.ConfigParser()
-    strConfigFile = os.path.dirname(os.path.abspath(__file__)) + "\\" + 'DemoENVProConfigure.ini'
+    strSysConfig = os.path.dirname(os.path.abspath(__file__)) + "\\" + 'SystemConfig.ini'
+    conf.read(strSysConfig, encoding="utf-8")
+    runType = int(conf['ExecEnvType']['execType'])
+    strConfigFile=1
+    if(runType == 1):
+        strConfigFile = os.path.dirname(os.path.abspath(__file__)) + "\\" + 'ProConfigure.ini'
+    elif(runType == 0):
+        strConfigFile = os.path.dirname(os.path.abspath(__file__)) + "\\" + 'DemoENVProConfigure.ini'
+
     conf.read(strConfigFile, encoding="utf-8")
     strFileName = r'd:\\TestResultLog_'+ str(datetime.date.today().strftime("%Y_%m_%d")) + '.txt'
     # def __init__(self):
         #filePath = cf['LogFile']['userPWD']
 
+    def sleepTime(intSeconds):
+        time.sleep(intSeconds)
     def convFlStr(self,val):
         if isinstance(val,float):
             val = str(int(val))

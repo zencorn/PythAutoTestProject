@@ -3,7 +3,6 @@ import time
 from ToolsFile.Utility import *
 
 class testCasesLib():
-
     def tc_UserRegist_1001():
         pageAgmHome.linkLogin().click()
         time.sleep(2)
@@ -11,9 +10,10 @@ class testCasesLib():
 
     def tc_UserDeposit_1003():
         sysConf = TestUtility.conf
-        str_UserName = sysConf['EndUserInfo']['userName']
-        str_UserPWD = sysConf['EndUserInfo']['userPWD']
-        pageAgmHome.linkLogin().click()
+        str_UserName = sysConf['TestEndUserInfo']['userName']
+        str_UserPWD = sysConf['TestEndUserInfo']['userPWD']
+        pageUserLogin.iconEnglish().click()
+        time.sleep(1)
         pageUserLogin.txtLoginUser().click()
         pageUserLogin.txtLoginUser().send_keys(str_UserName)
         pageUserLogin.txtUserPWD().click()
@@ -30,7 +30,7 @@ class testCasesLib():
         sysConf = TestUtility.conf
         str_UserName = sysConf['EndUserInfo']['userName']
         str_UserPWD = sysConf['EndUserInfo']['userPWD']
-        pageAgmHome.linkLogin().click()
+        # pageAgmHome.linkLogin().click()
         pageUserLogin.txtLoginUser().click()
         pageUserLogin.txtLoginUser().send_keys(str_UserName)
         pageUserLogin.txtUserPWD().click()
