@@ -42,7 +42,6 @@ class testCasesLib():
         pageUserLogin.btnLogin().click()
 class adminUserTCs():
     def tc_addFund():
-
         pageAdmin.changeAdminPortal()
         pageAdmin.inconEnglish().click()
         TestUtility.sleepTime(8)
@@ -57,3 +56,5 @@ class adminUserTCs():
         pageAdmin.txtVerifyCode().click()
         time.sleep(5)
         pageAdmin.btnLogin().click()
+        pageAdmin.btnSelLanguage().click()
+        pageAdmin.btnEnglish().click()
